@@ -1,0 +1,39 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-apk:
+    name: Build APK with Buildozer
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Prepare Buildozer cache folder
+        run: |
+          mkdir -p ~/.buildozer
+
+      - name: Build debug APK
+        run: |
+          docker run --rm \
+            --volume "$HOME/.buildozer":/home/user/.buildozer \
+            --volume "$PWD":/home/user/hostcwd \
+            kivy/buildozer android debug
+
+      - name: Show generated files
+        run: |
+          ls -la
+          ls -la bin || true
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: task-alarm-apk
+          path: bin/*.apk
