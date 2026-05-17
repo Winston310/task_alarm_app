@@ -7,7 +7,7 @@ source.dir = .
 source.include_exts = py,kv,png,jpg,jpeg,wav,json
 
 version = 0.1
-requirements = python3,kivy,plyer,pyjniusr
+requirements = python3,kivy,plyer
 orientation = portrait
 fullscreen = 0
 
