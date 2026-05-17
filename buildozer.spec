@@ -7,12 +7,12 @@ source.dir = .
 source.include_exts = py,kv,png,jpg,jpeg,wav,json
 
 version = 0.1
-requirements = python3,kivy,plyer
+requirements = python3,kivy,plyer,pyjniusr
 orientation = portrait
 fullscreen = 0
 
 # Android 13+ может попросить разрешение на уведомления.
-android.permissions = POST_NOTIFICATIONS,VIBRATE
+android.permissions = POST_NOTIFICATIONS,VIBRATE,WAKE_LOCK,USE_EXACT_ALARM,USE_FULL_SCREEN_INTENT
 android.api = 35
 android.minapi = 24
 android.ndk_api = 24
